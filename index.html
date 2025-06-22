@@ -7,10 +7,118 @@
 </head>
 <body>
   <div class="container">
+    <!-- 個性化控制面板 -->
+    <div class="control-panel">
+      <button onclick="toggleNightMode()" class="mode-btn">🌙 夜間模式</button>
+      <button onclick="refreshAllData()" class="refresh-btn">🔄 重新整理</button>
+      <button onclick="showTips()" class="tips-btn">💡 觀測小貼士</button>
+    </div>
+    
     <h1>今日節氣 🌞</h1>
     <p id="today-date"></p>
     <p id="solar-term">正在計算中…</p>
+    
+    <h1>今日太陽星座 ☀️</h1>
+    <ul>
+      <li>太陽黃經：約 <span id="sun-longitude">...</span>°</li>
+      <li>所屬星座：<span id="sun-zodiac">...</span></li>
+    </ul>
+    
+    <!-- 星座詳細資訊 -->
+    <div class="zodiac-details" id="zodiac-details">
+      <h3 id="zodiac-name">正在載入星座資訊...</h3>
+      <div class="zodiac-info-grid">
+        <div class="zodiac-section">
+          <h4>🏛️ 神話與起源</h4>
+          <p id="zodiac-mythology">載入中...</p>
+        </div>
+        <div class="zodiac-section">
+          <h4>⭐ 主要亮星</h4>
+          <ul id="zodiac-stars">
+            <li>載入中...</li>
+          </ul>
+        </div>
+        <div class="zodiac-section">
+          <h4>🔭 觀測特點</h4>
+          <p id="zodiac-observation">載入中...</p>
+        </div>
+        <div class="zodiac-section">
+          <h4>📅 最佳觀測期</h4>
+          <p id="zodiac-best-time">載入中...</p>
+        </div>
+      </div>
+    </div>
+    
+    <!-- 星座切換按鈕 -->
+    <div class="zodiac-selector">
+      <h4>🌟 探索其他黃道星座</h4>
+      <div class="zodiac-buttons">
+        <button onclick="showZodiacDetails('aries')" data-zodiac="aries">♈ 白羊</button>
+        <button onclick="showZodiacDetails('taurus')" data-zodiac="taurus">♉ 金牛</button>
+        <button onclick="showZodiacDetails('gemini')" data-zodiac="gemini">♊ 雙子</button>
+        <button onclick="showZodiacDetails('cancer')" data-zodiac="cancer">♋ 巨蟹</button>
+        <button onclick="showZodiacDetails('leo')" data-zodiac="leo">♌ 獅子</button>
+        <button onclick="showZodiacDetails('virgo')" data-zodiac="virgo">♍ 處女</button>
+        <button onclick="showZodiacDetails('libra')" data-zodiac="libra">♎ 天秤</button>
+        <button onclick="showZodiacDetails('scorpio')" data-zodiac="scorpio">♏ 天蠍</button>
+        <button onclick="showZodiacDetails('sagittarius')" data-zodiac="sagittarius">♐ 射手</button>
+        <button onclick="showZodiacDetails('capricorn')" data-zodiac="capricorn">♑ 摩羯</button>
+        <button onclick="showZodiacDetails('aquarius')" data-zodiac="aquarius">♒ 水瓶</button>
+        <button onclick="showZodiacDetails('pisces')" data-zodiac="pisces">♓ 雙魚</button>
+      </div>
+    </div>
+    
+    <h1>今日月相 🌕</h1>
+    <ul>
+      <li>月相：<span id="moon-phase">...</span></li>
+      <li>月出：<span id="moon-rise">...</span></li>
+      <li>月沒：<span id="moon-set">...</span></li>
+      <li>仰角：<span id="moon-alt">...</span>°</li>
+      <li>方位角：<span id="moon-az">...</span>°</li>
+      <li>月亮距離：<span id="moon-distance">...</span> 公里</li>
+      <li>光照度：<span id="moon-illumination">...</span>%</li>
+    </ul>
+    
+    <h1>今日天文現象 🔭</h1>
+    <ul id="astronomical-events">
+      <li>正在計算中...</li>
+    </ul>
+    
+    <h1>太陽資訊 ☀️</h1>
+    <ul id="sun-info">
+      <li>正在計算中...</li>
+    </ul>
+    
+    <h1>今晚可見星星 ✨</h1>
+    
+    <!-- 星空圖 -->
+    <div class="star-map-container">
+      <h3>🌌 當前星空圖</h3>
+      
+      <!-- 時間控制 -->
+      <div class="time-controls">
+        <button onclick="updateStarMap(-3)">⏪ 3小時前</button>
+        <button onclick="updateStarMap(0)" class="current-time-btn">🕐 現在</button>
+        <button onclick="updateStarMap(3)">3小時後 ⏩</button>
+      </div>
+      
+      <canvas id="star-map" width="400" height="400"></canvas>
+      <div id="map-time-display"></div>
+      
+      <div class="compass">
+        <div class="direction north">北</div>
+        <div class="direction east">東</div>
+        <div class="direction south">南</div>
+        <div class="direction west">西</div>
+      </div>
+    </div>
+    
+    <!-- 星星列表 -->
+    <ul id="visible-stars">
+      <li>正在計算中...</li>
+    </ul>
   </div>
+  <script src="libs/suncalc.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
